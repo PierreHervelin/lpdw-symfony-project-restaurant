@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Restaurant{% endblock %}
+
+{% block body %}
+    <div class="container-admin">
+        <h1>Edit Restaurant</h1>
+
+        {{ include('restaurant/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path('owner_restaurant_index') }}">back to list</a>
+
+        {{ include('restaurant/_delete_form.html.twig') }}
+    </div>
+
+    <div class="product-list">
+        <h3>Product list</h3>
+        {% for product in products %}
+            <div>
+                <div>{{ product.name }}</div>
+                <div>{{ product.price }}</div>
+                <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+            </div>
+        {% else %}
+            <div>No product</div>
+        {% endfor %}
+        <a href="{{ path('restaurant_add_product', {'id': restaurant.id}) }}">Add Product</a>
+    </div>
+{% endblock %}

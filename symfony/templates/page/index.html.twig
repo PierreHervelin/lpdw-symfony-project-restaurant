@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h3>Find your new favorite restaurant !</h3>
+    <div class="restaurants">
+        {% for restaurant in restaurants %}
+            <a class="container-restaurant" href="{{ path('restaurant_index', {'id': restaurant.id}) }}">
+                <span class="img"></span>
+                <span class="container">
+                    <span>{{ restaurant.name }}</span>
+                    <span>{{ restaurant.address }}</span>
+                </span>
+            </a>
+        {% else %}
+            <div>No restaurants found.</div>
+        {% endfor %}
+    </div>
+{% endblock %}

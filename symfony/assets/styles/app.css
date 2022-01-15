@@ -1,0 +1,381 @@
+body {
+    background-color: white;
+    height: 100%;
+}
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.navbar {
+    height: 70px;
+    min-width: 100vw;
+    background-color: #0ca4a5;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+}
+.navbar > a {
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 20px;
+    font-size: 18px;
+}
+.navbar .profile {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 25px;
+}
+
+.navbar .profile > div,
+.navbar .profile > a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: transparent;
+    transition: background-color ease 0.5s;
+    padding: 10px;
+}
+.navbar .profile > a:hover {
+    background-color: #06908f;
+}
+.navbar .profile > #logout:hover {
+    background-color: #900606;
+}
+.navbar .profile > div span {
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #fcd2a5;
+}
+
+.login-page,
+.registration {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.registration {
+    margin-top: 100px;
+}
+.login-page > form,
+.registration > form,
+.registration #user > div {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.login-page > form input,
+.login-page > form label,
+.login-page > form button,
+.login-page > div,
+.registration #user label,
+.registration #user input,
+.registration #user select {
+    margin: 10px;
+}
+.login-page > div > a {
+    text-decoration: none;
+    color: #dbb68f;
+}
+.error {
+    color: red;
+}
+
+input {
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(185, 185, 185, 0.3);
+    min-width: 100px;
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+}
+input:focus-visible {
+    outline: none;
+}
+button {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(161, 161, 161, 0.3);
+    font-size: 18px;
+    padding: 15px;
+    cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    transition: background-color ease 0.5s;
+}
+button:hover {
+    background-color: #555;
+}
+.login-page > form label,
+.registration #user label {
+    font-size: 20px;
+}
+
+h3 {
+    margin-top: 150px;
+    width: 100%;
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.restaurants {
+    display: flex;
+    overflow-x: scroll;
+    max-width: 100vw;
+}
+.restaurants > a {
+    width: 400px;
+    min-width: 400px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 40px;
+
+    box-shadow: 0 0 20px rgba(161, 161, 161, 0.3);
+
+    text-decoration: none;
+    color: black;
+
+    transition: transform ease 0.5s;
+}
+.inline {
+    display: flex;
+}
+.inline > div:first-child {
+    margin-right: 10px;
+}
+.restaurants > a:hover {
+    transform: scale(1.08);
+}
+.restaurants > a > .container {
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.restaurants > a > .img {
+    width: 100%;
+    height: 300px;
+    background-image: url('https://cdn.discordapp.com/attachments/908308607337123841/931655176471859220/restaurant.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.restaurant-image {
+    margin-top: 35px;
+    padding-bottom: 50px;
+    width: 100%;
+    height: 600px;
+    background-image: url('https://cdn.discordapp.com/attachments/908308607337123841/931655176471859220/restaurant.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.restaurant {
+    margin-top: 70px;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.restaurant .head-menu {
+    width: 100%;
+    position: relative;
+    background-color: white;
+    height: fit-content;
+}
+.restaurant h2 {
+    margin-top: 35px;
+    width: 100%;
+    text-align: center;
+}
+.restaurant .left-menu {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(185, 185, 185, 0.3);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+.restaurant .infos {
+    height: 200px;
+    position: relative;
+    width: fit-content;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    background-color: #0ca4a5;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(185, 185, 185, 0.3);
+    margin-bottom: 30px;
+}
+.restaurant .infos .restaurant-infos {
+    color: white;
+    font-size: 17px;
+    margin: 15px;
+}
+.restaurant .infos .restaurant-infos div {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.restaurant .infos .owner-infos {
+    background-color: white;
+    width: 50%;
+    height: 200px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.profile-picture {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    background-color: black;
+}
+.restaurant .content {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    padding-bottom: 150px;
+}
+.restaurant .products {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-left: 408px;
+    width: calc(100% - 408px);
+}
+.restaurant .products .product {
+    margin: 20px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(185, 185, 185, 0.3);
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+}
+.restaurant .content .buttons {
+    display: flex;
+    position: absolute;
+    bottom: 50px;
+    left: calc(50% + 204px);
+    transform: translate(-50%);
+}
+.restaurant .content .buttons a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(185, 185, 185, 0.3);
+    background-color: #0ca4a5;
+    transition: transform ease 0.5s;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.restaurant .content .buttons a:hover {
+    transform: scale(1.08);
+}
+.restaurant .product-picture {
+    background-image: url('https://cdn.discordapp.com/attachments/908308607337123841/931956182015422494/product.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 60%;
+}
+.restaurant .product-name,
+.restaurant .product-price {
+    font-weight: bold;
+}
+.restaurant .product-price {
+    color: #900606;
+}
+.restaurant .review {
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(185, 185, 185, 0.3);
+    background-color: white;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.restaurant .review div {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 30px;
+}
+.restaurant .review div.note {
+    color: rgb(47, 163, 1);
+    margin-left: 0;
+}
+.purchase {
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.purchase label {
+    font-size: 18px;
+}
+#pruchase-order-lines input,
+#pruchase-order-lines button,
+#pruchase-order-lines select {
+    margin-bottom: 10px;
+}
+#pruchase-order-lines > span,
+#pruchase-order-lines > span > div {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+.container-admin {
+    margin-top: 100px;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmNzcyIsIm1hcHBpbmdzIjoiQUFBQTtJQUNJLDJCQUEyQjtBQUMvQiIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL2Fzc2V0cy9zdHlsZXMvYXBwLmNzcyJdLCJzb3VyY2VzQ29udGVudCI6WyJib2R5IHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodGdyYXk7XG59XG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=*/

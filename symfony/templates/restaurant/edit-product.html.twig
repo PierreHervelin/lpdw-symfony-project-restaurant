@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block body %}
+    <div class="container-admin">
+        <h1>Edit Product</h1>
+
+        {{ include('restaurant/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path('restaurant_edit', {'id': restaurant.id}) }}">back to list</a>
+
+        {{ include('restaurant/_delete_product_form.html.twig') }}
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}My orders{% endblock %}
+{% block body %}
+    <div class="orders">
+        <h3>My orders</h3>
+        {% for order in orders %}
+            <a href="{{ path('purchase_order', {'id': order.id}) }}">
+                <span>Restaurant :{{ order.restaurant.name }}</span>
+                {% for orderLine in order.purchaseOrderLines %}
+                    <span>{{orderLine.product.name}}</span>
+                    <span>{{orderLine.quantity}}$</span>
+                {% else %}
+                    <span>No product found.</span>
+                {% endfor %}
+                <span>{{ order.totalPrice }}$</span>
+            </a>
+        {% else %}
+            <div>No order found.</div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{restaurant.name}}{% endblock %}
+
+{% block body %}
+    <div class="restaurant">
+        <div class="head-menu">
+            <h2>{{restaurant.name}}</h2>
+            <div class="restaurant-image"></div>
+        </div>
+        <div class="content">
+            <div class="left-menu">
+                <div class="infos">
+                    <div class="restaurant-infos">
+                        <div>Place: {{restaurant.address}}</div>
+                        <div>Phone: {{restaurant.phone}}</div>
+                    </div>
+                    <div class="owner-infos">
+                        <h4>Owner</h4>
+                        <div class="profile-picture"></div>
+                        <div class="inline">
+                            <div>{{restaurant.owner[0].firstname}}</div>
+                            <div>{{restaurant.owner[0].lastname}}</div>
+                        </div>
+                    </div>
+                </div>
+                {% if restaurant.products|length > 0 %}
+                    <div class="review">
+                        <div class="note">Note: 8/10</div>
+                        <div>Great restaurant !! I recommend.</div>
+                    </div>
+                    <div class="review">
+                        <div class="note">Note: 7.5/10</div>
+                        <div>Very good food.</div>
+                    </div>
+                    <div class="review">
+                        <div class="note">Note: 6/10</div>
+                        <div>Automatic review.</div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="products">
+                {% for product in restaurant.products %}
+                    <div class="product">
+                        <div class="product-picture"></div>
+                        <div class="inline">
+                            <div class="product-name">{{product.name}}</div>
+                            <div class="product-price">{{product.price}}$</div>
+                        </div>
+                        <div>{{product.description}}</div>
+                    </div>
+                {% else %}
+                    <div>No products :(</div>
+                {% endfor %}
+            </div>
+            <div class="buttons">
+                {% if is_granted("ROLE_ADMIN") and app.user.email is same as(restaurant.owner[0].email) %}
+                    <a href="{{ path('restaurant_edit', {'id': restaurant.id}) }}">Edit</a>
+                {% endif %}
+                {% if restaurant.products|length > 0 %}
+                    <a href="{{ path('restaurant_purchase', {'id': restaurant.id}) }}">Purchase !</a>
+                {% endif %}  
+            </div>
+        </div>
+    </div>
+{% endblock %}

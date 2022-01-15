@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="purchase">
+        {{ form_start(form) }}
+            <div id="pruchase-order-lines" data-prototype="{{ form_row(form.purchaseOrderLines.vars.prototype)|e('html_attr') }}">
+                {{ form_row(form.purchaseOrderLines) }}
+                <span></span>
+            </div>
+            {{ form_row(form.valider) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        let collection, boutonAjout, span;
+        window.onload = () => {
+            collection = document.querySelector("#pruchase-order-lines");
+            span = collection.querySelector("span");
+            boutonAjout = document.createElement("button");
+            boutonAjout.className = "new-product btn secondary";
+            boutonAjout.innerText = "New Product";
+            let nouveauBouton = span.append(boutonAjout);
+            collection.dataset.index = collection.querySelectorAll("input").length;
+            boutonAjout.addEventListener("click", function(){
+                addButton(collection, nouveauBouton);
+            });
+        }
+        function addButton(collection, nouveauBouton){
+            let prototype = collection.dataset.prototype;
+            let index = collection.dataset.index;
+            prototype = prototype.replace(/__name__/g, index);
+            let content = document.createElement("html");
+            content.innerHTML = prototype;
+            let newForm = content.querySelector("div");
+            let boutonSuppr = document.createElement("button");
+            boutonSuppr.type = "button";
+            boutonSuppr.className = "btn red";
+            boutonSuppr.id = "delete-product-" + index;
+            boutonSuppr.innerText = "Delete Product";
+            newForm.append(boutonSuppr);
+            collection.dataset.index++;
+            let boutonAjout = collection.querySelector(".new-product");
+            span.insertBefore(newForm, boutonAjout);
+            boutonSuppr.addEventListener("click", function(){
+                this.previousElementSibling.parentElement.remove();
+            })
+        }
+    </script>
+{% endblock %}

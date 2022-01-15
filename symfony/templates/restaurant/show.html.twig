@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant{% endblock %}
+
+{% block body %}
+    <div class="container-admin">
+        <h1>Restaurant</h1>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ restaurant.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ restaurant.name }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ restaurant.address }}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{ restaurant.phone }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <a href="{{ path('owner_restaurant_index') }}">back to list</a>
+
+        <a href="{{ path('restaurant_edit', {'id': restaurant.id}) }}">edit</a>
+
+        {{ include('restaurant/_delete_form.html.twig') }}
+
+        <div class="product-list">
+            <h3>Product list</h3>
+            {% for product in products %}
+                <div>
+                    <div>{{ product.name }}</div>
+                    <div>{{ product.price }}$</div>
+                    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+                </div>
+            {% else %}
+                <div>No product.</div>
+            {% endfor %}
+            <a href="{{ path('restaurant_add_product', {'id': restaurant.id}) }}">Add Product</a>
+        </div>
+
+        <div class="order-list">
+            <h3>Order list</h3>
+            {% for order in orders %}
+                <div class="order-list">
+                    <div>Id: {{ order.purchaseOrderId }}</div>
+                    <div>Total price: {{ order.totalPrice }}$</div>
+                    <div class="user-order-profile">
+                        <div>
+                            <div>{{order.user.firstname}}</div>
+                            <div>{{order.user.lastname}}</div>
+                        </div>
+                        <div>{{order.user.email}}</div>
+                    </div>
+                    {% for orderLine in order.purchaseOrderLines %}
+                        <div class="order-line-list">
+                            <div>product: {{ orderLine.product.name }}</div>
+                            <div>product: {{ orderLine.quantity }}</div>
+                            <div>price: {{ orderLine.product.price }}$</div>                        
+                        </div>
+                    {% else %}
+                        <div>No order line.</div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div>No order.</div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

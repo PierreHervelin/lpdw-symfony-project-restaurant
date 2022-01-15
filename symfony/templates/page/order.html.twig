@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}Order: {{order.restaurant.name}}{% endblock %}
+{% block body %}
+    <div class="orders">
+        <h3>Order Id: {{order.purchaseOrderId}}</h3>
+        <div>Restaurant :{{ order.restaurant.name }}</div>
+        {% for orderLine in order.purchaseOrderLines %}
+            <div class="order-line">
+                <div>{{orderLine.product.name}}</div>
+                <div>{{orderLine.product.price}}$</div>
+                <div>{{orderLine.quantity}}</div>
+            <div>
+        {% else %}
+            <div>No product found.</div>
+        {% endfor %}
+        <div>Total price: {{ order.totalPrice }}$</div>
+    </div>
+{% endblock %}
