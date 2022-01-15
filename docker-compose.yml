@@ -72,7 +72,6 @@ services:
 
   logstash:
     container_name: logstash
-    platform: linux/x86_64
     image: docker.elastic.co/logstash/logstash:7.16.2
     depends_on:
       - elasticsearch
